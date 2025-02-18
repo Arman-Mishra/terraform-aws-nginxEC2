@@ -1,0 +1,21 @@
+#cloud-config
+packages:
+  - nginx # Install NGINX
+  - vim # Install Vim text editor
+  - htop # Install htop (for system monitoring)
+  - curl # Install curl for HTTP requests
+  - git # Install Git for version control
+
+runcmd:
+  - systemctl start nginx # Start the NGINX service
+  - systemctl enable nginx # Enable NGINX to start on boot
+
+write_files:
+  - path: /var/www/html/index.html # Create a simple HTML page for NGINX
+    content: |
+      <html>
+        <head><title>Welcome</title></head>
+        <body>
+          <h1>Welcome to NGINX on Ubuntu</h1>
+        </body>
+      </html>
